@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv, default='*')
+DEBUG = config('DEBUG')
+ALLOWED_HOSTS = ['*']  # Adjust as needed for production
 
 
 # Application definition
