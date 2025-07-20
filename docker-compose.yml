@@ -1,5 +1,5 @@
-version: '3.9'
-
+# This is a Docker Compose file for an e-commerce microservices project.
+# It defines services for user and product management, each with its own database.
 services:
   user-service:
     build: ./user-service
@@ -7,4 +7,40 @@ services:
       - ./user-service:/code
     ports:
       - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - ./user-service/.env
+    depends_on:
+      - user-db
+
+  user-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - user-db-data:/var/lib/postgresql/data
+
+  product-service:
+    build: ./product-service
+    volumes:
+      - ./product-service:/code
+    ports:
+      - "8001:8000"
+    env_file:
+      - ./product-service/.env
+    depends_on:
+      - product-db
+
+  product-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: productdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - product-db-data:/var/lib/postgresql/data
+
+volumes:
+  user-db-data:
+  product-db-data:
