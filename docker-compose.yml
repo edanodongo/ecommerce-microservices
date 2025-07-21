@@ -3,10 +3,14 @@
 services:
   user-service:
     build: ./user-service
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: user-service
+    networks:
+      - traefik
     volumes:
       - ./user-service:/code
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     env_file:
       - ./user-service/.env
     depends_on:
@@ -14,6 +18,8 @@ services:
 
   user-db:
     image: postgres:15
+    networks:         
+      - traefik
     env_file:
       - ./user-service/.env
     volumes:
@@ -21,10 +27,14 @@ services:
 
   product-service:
     build: ./product-service
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: product-service
+    networks:
+      - traefik
     volumes:
       - ./product-service:/code
-    ports:
-      - "8001:8000"
+    # ports:
+    #   - "8001:8000"
     env_file:
       - ./product-service/.env
     depends_on:
@@ -32,6 +42,8 @@ services:
 
   product-db:
     image: postgres:15
+    networks:         
+      - traefik
     env_file:
       - ./product-service/.env
     volumes:
@@ -39,10 +51,14 @@ services:
 
   order-service:
     build: ./order-service
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: order-service
+    networks:
+      - traefik
     volumes:
       - ./order-service:/code
-    ports:
-      - "8002:8000"
+    # ports:
+    #   - "8002:8000"
     env_file:
       - ./order-service/.env
     depends_on:
@@ -50,6 +66,8 @@ services:
 
   order-db:
     image: postgres:15
+    networks:         
+      - traefik
     env_file:
       - ./order-service/.env
     volumes:
@@ -57,10 +75,14 @@ services:
 
   payment-service:
     build: ./payment-service
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: payment-service
+    networks:
+      - traefik
     volumes:
       - ./payment-service:/code
-    ports:
-      - "8003:8000"
+    # ports:
+    #   - "8003:8000"
     env_file:
       - ./payment-service/.env
     depends_on:
@@ -68,11 +90,18 @@ services:
 
   payment-db:
     image: postgres:15
+    networks:         
+      - traefik
     env_file:
       - ./payment-service/.env
     volumes:
       - payment-db-data:/var/lib/postgresql/data
 
+
+
+networks:
+  traefik:
+    name: traefik # Ensure this matches the network used by Traefik
 
 volumes:
   user-db-data:
