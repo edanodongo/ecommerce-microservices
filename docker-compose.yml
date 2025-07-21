@@ -1,4 +1,4 @@
-# This is a Docker Compose file for an e-commerce microservices project.
+# This is a Docker Compose file for the e-commerce microservices.
 # It defines services for user and product management, each with its own database.
 services:
   user-service:
@@ -55,7 +55,27 @@ services:
     volumes:
       - order-db-data:/var/lib/postgresql/data
 
+  payment-service:
+    build: ./payment-service
+    volumes:
+      - ./payment-service:/code
+    ports:
+      - "8003:8000"
+    env_file:
+      - ./payment-service/.env
+    depends_on:
+      - payment-db
+
+  payment-db:
+    image: postgres:15
+    env_file:
+      - ./payment-service/.env
+    volumes:
+      - payment-db-data:/var/lib/postgresql/data
+
+
 volumes:
   user-db-data:
   product-db-data:
   order-db-data:
+  payment-db-data:
