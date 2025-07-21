@@ -4,9 +4,10 @@ from decouple import config, Csv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = config('SECRET_KEY')
+
 DEBUG = config('DEBUG')
+
 ALLOWED_HOSTS = ['*']  # Adjust as needed for production
 
 
@@ -20,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'catalog',  
+    'orders', 
 ]
 
 MIDDLEWARE = [
@@ -33,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'productservice.urls'
+ROOT_URLCONF = 'orderservice.urls'
 
 TEMPLATES = [
     {
@@ -50,7 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'productservice.wsgi.application'
+WSGI_APPLICATION = 'orderservice.wsgi.application'
 
 
 # Database
