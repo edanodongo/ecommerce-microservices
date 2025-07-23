@@ -18,6 +18,8 @@ from .serializers import OrderSerializer
 
 PRODUCT_SERVICE_URL = "http://product-service:8000/catalog/products/"
 
+# Order ViewSet
+# This view handles listing all orders and creating a new order.
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
