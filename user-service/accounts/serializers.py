@@ -1,13 +1,4 @@
-# from rest_framework import serializers
-# from .models import CustomUser
-
-# # Serializers for the CustomUser model
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CustomUser
-#         fields = ['id', 'username', 'email']
-
-
+# projects/ecommerce-microservices/user-service/accounts/serializers.py
 from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth.password_validation import validate_password

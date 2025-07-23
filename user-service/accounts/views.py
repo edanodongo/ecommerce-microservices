@@ -1,12 +1,12 @@
-# from django.shortcuts import render
-# from rest_framework import generics
-# from .models import CustomUser
-# from .serializers import UserSerializer
+from django.shortcuts import render
+from rest_framework import generics
+from .models import CustomUser
+from .serializers import RegisterSerializer
 
-# # View to handle user list and creation
-# class UserListCreateView(generics.ListCreateAPIView):
-#     queryset = CustomUser.objects.all()
-#     serializer_class = UserSerializer
+# View to handle user list and creation
+class RegisterView(generics.ListCreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = RegisterSerializer
 
 
 # from rest_framework import generics, permissions
@@ -15,7 +15,7 @@
 # from rest_framework.views import APIView
 # from django.contrib.auth import get_user_model
 # from rest_framework import status
-# from .serializers import UserSerializer
+# from .serializers import RegisterSerializer
 # from django.contrib.auth.password_validation import validate_password
 # from django.core.exceptions import ValidationError
 
@@ -44,20 +44,9 @@
 #         )
 #         token = Token.objects.create(user=user)
 #         return Response({
-#             "user": UserSerializer(user).data,
+#             "user": RegisterSerializer(user).data,
 #             "token": token.key
 #         }, status=201)
 
 
 
-
-
-
-from rest_framework import generics
-from .models import CustomUser
-from .serializers import RegisterSerializer
-
-# View to handle user registration
-class RegisterView(generics.CreateAPIView):
-    queryset = CustomUser.objects.all()
-    serializer_class = RegisterSerializer
