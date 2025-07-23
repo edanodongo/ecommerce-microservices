@@ -1,22 +1,10 @@
-# from rest_framework import generics
-# from .models import Order
-# from .serializers import OrderSerializer
-
-# # Order List and Create View
-# # This view allows listing all orders and creating a new order.
-# class OrderListCreateView(generics.ListCreateAPIView):
-#     queryset = Order.objects.all()
-#     serializer_class = OrderSerializer
-
-
-
 import requests
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Order
 from .serializers import OrderSerializer
 
-PRODUCT_SERVICE_URL = "http://product-service:8000/catalog/products/"
+PRODUCT_SERVICE_URL = "http://product-service:8001/catalog/products/"
 
 # Order ViewSet
 # This view handles listing all orders and creating a new order.
