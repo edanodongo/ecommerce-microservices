@@ -4,7 +4,7 @@ from .models import CustomUser
 from .serializers import RegisterSerializer
 
 # View to handle user list and creation
-class UserListCreateView(generics.ListCreateAPIView):
+class RegisterView(generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = RegisterSerializer
 
@@ -47,4 +47,6 @@ class UserListCreateView(generics.ListCreateAPIView):
 #             "user": RegisterSerializer(user).data,
 #             "token": token.key
 #         }, status=201)
+
+
 
