@@ -34,6 +34,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE.insert(0, 'product.middleware.InterServiceAuthMiddleware')
+
 
 ROOT_URLCONF = 'productservice.urls'
 

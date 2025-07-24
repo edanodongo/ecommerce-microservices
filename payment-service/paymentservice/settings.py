@@ -33,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE.insert(0, 'payment.middleware.InterServiceAuthMiddleware')
 
 ROOT_URLCONF = 'paymentservice.urls'
 
