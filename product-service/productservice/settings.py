@@ -8,6 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = ['*']  # Adjust as needed for production
+import os
+SERVICE_JWT_SECRET = os.environ.get("SERVICE_JWT_SECRET", "fallback-secret")
 
 
 # Application definition
@@ -32,6 +34,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE.insert(0, 'product.middleware.InterServiceAuthMiddleware')
+
 
 ROOT_URLCONF = 'productservice.urls'
 
