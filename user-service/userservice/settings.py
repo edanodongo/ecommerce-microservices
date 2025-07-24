@@ -4,6 +4,8 @@ from decouple import config, Csv
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = ['*']  # Adjust as needed for production
+import os
+SERVICE_JWT_SECRET = os.environ.get("SERVICE_JWT_SECRET", "fallback-secret")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

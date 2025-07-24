@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = ['*']  # Allow all hosts for development; adjust in production
+import os
+SERVICE_JWT_SECRET = os.environ.get("SERVICE_JWT_SECRET", "fallback-secret")
 
 
 # Application definition
