@@ -18,4 +18,6 @@ router.register(r'products', ProductViewSet)
 
 urlpatterns = [
     path('catalog/', include(router.urls)),
+    path('internal/products/<int:pk>/', ProductDetailInternalView.as_view()),
 ]
+
