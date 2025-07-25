@@ -11,9 +11,9 @@ from .utils.jwt import create_service_token
 headers = {
     "Authorization": f"Bearer {create_service_token()}"
 }
-product_response = requests.get(
-    f"{PRODUCT_SERVICE_URL}{product_id}/", headers=headers
-)
+# product_response = requests.get(
+#     f"{PRODUCT_SERVICE_URL}{product_id}/", headers=headers
+# )
 
 
 # Order ViewSet
@@ -28,7 +28,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         # Fetch product info from Product Service
         try:
-            product_response = requests.get(f"{PRODUCT_SERVICE_URL}{product_id}/")
+            product_response = requests.get(f"{PRODUCT_SERVICE_URL}{product_id}/"), headers=headers
             if product_response.status_code != 200:
                 return Response({"error": "Product not found"}, status=404)
 
