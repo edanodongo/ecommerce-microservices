@@ -6,7 +6,7 @@ from .serializers import OrderSerializer
 
 PRODUCT_SERVICE_URL = "http://product-service:8001/catalog/products/"
 
-from .order
+from orders.jwt import create_service_token
 
 headers = {
     "Authorization": f"Bearer {create_service_token()}"
