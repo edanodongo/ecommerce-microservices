@@ -8,13 +8,6 @@ PRODUCT_SERVICE_URL = "http://product-service:8001/catalog/products/"
 
 from .utils.jwt import create_service_token
 
-# headers = {
-#     "Authorization": f"Bearer {create_service_token()}"
-# }
-# product_response = requests.get(
-#     f"{PRODUCT_SERVICE_URL}{product_id}/", headers=headers
-# )
-
 
 # Order ViewSet
 # This view handles listing all orders and creating a new order.
