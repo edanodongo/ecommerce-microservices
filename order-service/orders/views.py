@@ -8,9 +8,9 @@ PRODUCT_SERVICE_URL = "http://product-service:8001/catalog/products/"
 
 from .utils.jwt import create_service_token
 
-headers = {
-    "Authorization": f"Bearer {create_service_token()}"
-}
+# headers = {
+#     "Authorization": f"Bearer {create_service_token()}"
+# }
 # product_response = requests.get(
 #     f"{PRODUCT_SERVICE_URL}{product_id}/", headers=headers
 # )
@@ -27,8 +27,11 @@ class OrderViewSet(viewsets.ModelViewSet):
         quantity = int(request.data.get("quantity", 0))
 
         # Fetch product info from Product Service
-        try:
-            product_response = requests.get(f"{PRODUCT_SERVICE_URL}{product_id}/"), headers=headers
+        try:            
+            headers = {
+                "Authorization": f"Bearer {create_service_token()}"
+            }
+            product_response = requests.get(f"{PRODUCT_SERVICE_URL}{product_id}/", headers=headers)
             if product_response.status_code != 200:
                 return Response({"error": "Product not found"}, status=404)
 
