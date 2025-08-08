@@ -33,7 +33,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-MIDDLEWARE.insert(0, 'orderservice.middleware.InterServiceAuthMiddleware')
+MIDDLEWARE.insert(0, 'order-service.middleware.InterServiceAuthMiddleware')
 
 ROOT_URLCONF = 'orderservice.urls'
 

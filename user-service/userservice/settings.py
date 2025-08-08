@@ -40,7 +40,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-MIDDLEWARE.insert(0, 'userservice.middleware.InterServiceAuthMiddleware')
+MIDDLEWARE.insert(0, 'user-service.middleware.InterServiceAuthMiddleware')
 
 
 ROOT_URLCONF = 'userservice.urls'
