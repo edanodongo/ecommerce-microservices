@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'users'
+    'users',
     'accounts',
 ]
 
@@ -41,8 +41,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'userservice.middleware.InterServiceAuthMiddleware',
 ]
-MIDDLEWARE.insert(0, 'user-service.middleware.InterServiceAuthMiddleware')
 
 
 ROOT_URLCONF = 'userservice.urls'
