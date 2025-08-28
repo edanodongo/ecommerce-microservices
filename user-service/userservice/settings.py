@@ -22,12 +22,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'users',
     'accounts',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        "rest_framework_simplejwt.authentication.JWTAuthentication",        
     ],
 }
 
@@ -39,8 +41,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'userservice.middleware.InterServiceAuthMiddleware',
 ]
-MIDDLEWARE.insert(0, 'userservice.middleware.InterServiceAuthMiddleware')
 
 
 ROOT_URLCONF = 'userservice.urls'
