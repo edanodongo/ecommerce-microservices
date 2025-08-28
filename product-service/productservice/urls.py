@@ -21,3 +21,9 @@ urlpatterns = [
     path('internal/products/<int:pk>/', ProductDetailInternalView.as_view()),
 ]
 
+
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('api/products/', include('products.urls')),
+# ]
